@@ -1,5 +1,585 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {}
+    "界面检测": {
+        "next": [
+            "HDD菜单逻辑",
+            "在大世界",
+            "休息了一下1",
+            "休息了一下2",
+            "界面检测间隔"
+        ]
+    },
+    "界面检测间隔": {
+        "next": "界面检测",
+        "post_delay": 1000
+    },
+    "休息了一下1": {
+        "recognition": "OCR",
+        "roi": [
+            408,
+            577.5,
+            444,
+            38
+        ],
+        "expected": "[总觉得有些累了还是先舒服地休息了一下吧]{4,}",
+        "action": "Click",
+        "next": [
+            "休息了一下1",
+            "休息了一下2",
+            "界面检测"
+        ],
+        "post_delay": 2000
+    },
+    "休息了一下2": {
+        "recognition": "OCR",
+        "roi": [
+            392,
+            350.5,
+            484,
+            39
+        ],
+        "expected": "[总觉得有些累了还是先舒服地休息了一下吧]{4,}",
+        "action": "Click",
+        "next": [
+            "休息了一下2",
+            "界面检测"
+        ],
+        "post_delay": 2000
+    },
+    "在大世界": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            28,
+            0,
+            163,
+            134
+        ],
+        "template": "BW_menu__78_41_63_43__28_0_163_134.png",
+        "action": "Click",
+        "target": [
+            1105,
+            401,
+            43,
+            39
+        ],
+        "next": [
+            "进入档案架",
+            "在地图"
+        ]
+    },
+    "在地图": {
+        "recognition": "OCR",
+        "roi": [
+            1062,
+            22,
+            130,
+            45
+        ],
+        "expected": "[街区]",
+        "next": [
+            "进入档案架",
+            "在地图"
+        ],
+        "action": "Swipe",
+        "begin": [
+            943,
+            239,
+            16,
+            83
+        ],
+        "end": [
+            624,
+            242.5,
+            30,
+            86
+        ]
+    },
+    "进入档案架": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            118,
+            543,
+            301,
+            162
+        ],
+        "template": "MAP_staff__168_593_201_62__118_543_301_162.png",
+        "action": "Click",
+        "target": true,
+        "next": [
+            "传送确认"
+        ]
+    },
+    "传送确认": {
+        "recognition": "OCR",
+        "roi": [
+            515,
+            316.5,
+            242,
+            60
+        ],
+        "expected": "[传送至该地点]{2,}",
+        "action": "Click",
+        "target": [
+            718,
+            419.5,
+            132,
+            29
+        ],
+        "next": "走到HDD",
+        "post_delay": 3000
+    },
+    "走到HDD": {
+        "recognition": "OCR",
+        "roi": [
+            627,
+            110.5,
+            189,
+            75
+        ],
+        "expected": "[影像档案架]{2,}",
+        "action": "Swipe",
+        "begin": [
+            232,
+            579.5,
+            13,
+            34
+        ],
+        "end": [
+            300,
+            688.5,
+            19,
+            23
+        ],
+        "duration": 850,
+        "next": "走到HDD2"
+    },
+    "走到HDD2": {
+        "action": "Swipe",
+        "begin": [
+            244,
+            570.5,
+            34,
+            14
+        ],
+        "end": [
+            462,
+            569.5,
+            34,
+            14
+        ],
+        "duration": 1800,
+        "next": "拖拽视角朝向HDD"
+    },
+    "拖拽视角朝向HDD": {
+        "action": "Swipe",
+        "begin": [
+            640,
+            333.5,
+            34,
+            32
+        ],
+        "end": [
+            789,
+            244.5,
+            38,
+            36
+        ],
+        "duration": 1500,
+        "next": [
+            "进入HDD系统",
+            "界面检测"
+        ]
+    },
+    "进入HDD系统": {
+        "recognition": "OCR",
+        "roi": [
+            425,
+            8.5,
+            406,
+            277
+        ],
+        "expected": "[空洞深潜系统]{2,}",
+        "action": "Click",
+        "target": [
+            999,
+            561.5,
+            62,
+            52
+        ],
+        "post_delay": 1500,
+        "next": [
+            "HDD菜单逻辑"
+        ]
+    },
+    "HDD菜单逻辑": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            766,
+            0,
+            135,
+            110
+        ],
+        "template": "HDD_logo1__816_26_35_34__766_0_135_110.png",
+        "next": [
+            "在第二章间章",
+            "选择章节1"
+        ]
+    },
+    "选择章节1": {
+        "action": "Click",
+        "target": [
+            983,
+            36.5,
+            117,
+            16
+        ],
+        "next": "选择章节2"
+    },
+    "选择章节2": {
+        "action": "Click",
+        "target": [
+            960,
+            208.5,
+            142,
+            22
+        ],
+        "next": [
+            "HDD菜单逻辑",
+            "界面检测"
+        ],
+        "post_delay": 5000
+    },
+    "在第二章间章": {
+        "recognition": "OCR",
+        "roi": [
+            999,
+            15,
+            69,
+            52
+        ],
+        "expected": "[间]",
+        "action": "Click",
+        "target": [
+            556,
+            443,
+            97,
+            67
+        ],
+        "next": [
+            "列表下滑"
+        ],
+        "timeout": 5000
+    },
+    "列表下滑": {
+        "recognition": "OCR",
+        "roi": [
+            814,
+            657,
+            104,
+            46
+        ],
+        "expected": "[委托]",
+        "pre_delay": 1500,
+        "action": "Swipe",
+        "begin": [
+            874,
+            526,
+            149,
+            37
+        ],
+        "end": [
+            857,
+            153,
+            153,
+            31
+        ],
+        "duration": 400,
+        "next": [
+            "选择拿命验收"
+        ],
+        "timeout": 5000
+    },
+    "选择拿命验收": {
+        "recognition": "OCR",
+        "roi": [
+            627,
+            92,
+            611,
+            517
+        ],
+        "order_by": "Vertical",
+        "index": 0,
+        "expected": "收",
+        "action": "Click",
+        "target": true,
+        "next": [
+            "点击下一步"
+        ],
+        "timeout": 5000
+    },
+    "点击下一步": {
+        "action": "Click",
+        "target": [
+            1039,
+            669,
+            142,
+            21
+        ],
+        "next": [
+            "点击出战"
+        ],
+        "timeout": 5000
+    },
+    "点击出战": {
+        "recognition": "OCR",
+        "roi": [
+            1050,
+            642,
+            144,
+            66
+        ],
+        "expected": "[出战]",
+        "action": "Click",
+        "target": true,
+        "next": [
+            "战斗逻辑"
+        ],
+        "post_delay": 8000,
+        "timeout": 60000
+    },
+    "战斗逻辑": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            7,
+            12,
+            133,
+            125
+        ],
+        "template": "BAT_logo1__57_62_33_25__7_12_133_125.png",
+        "threshold": 0.95,
+        "next": [
+            "战斗结束",
+            "妮可操作",
+            "比利操作",
+            "其他人操作"
+        ]
+    },
+    "比利操作": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            57,
+            14,
+            168,
+            102
+        ],
+        "template": "BAT_bili__113_48_78_32__63_0_178_130.png",
+        "action": "Custom",
+        "custom_action": "NikoAttack",
+        "next": "战斗逻辑",
+        "post_delay": 500
+    },
+    "妮可操作": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            57,
+            14,
+            168,
+            102
+        ],
+        "template": "BAT_niko__111_43_82_39__61_0_182_132.png",
+        "action": "Custom",
+        "custom_action": "NikoAttack",
+        "next": "战斗逻辑",
+        "post_delay": 500
+    },
+    "其他人操作": {
+        "action": "Click",
+        "target": [
+            1102,
+            507.5,
+            48,
+            43
+        ],
+        "next": "战斗逻辑",
+        "post_delay": 500
+    },
+    "战斗结束": {
+        "recognition": "OCR",
+        "roi": [
+            925,
+            116,
+            232,
+            138
+        ],
+        "expected": "80/",
+        "action": "Swipe",
+        "begin": [
+            231,
+            569.5,
+            16,
+            19
+        ],
+        "end": [
+            346,
+            387.5,
+            23,
+            27
+        ],
+        "duration": 4900,
+        "post_delay": 0,
+        "next": "战斗结束2"
+    },
+    "战斗结束2": {
+        "action": "Swipe",
+        "begin": [
+            231,
+            569.5,
+            16,
+            19
+        ],
+        "end": [
+            425,
+            619.5,
+            26,
+            18
+        ],
+        "duration": 1100,
+        "next": [
+            "对话高坂"
+        ],
+        "timeout": 3000,
+        "pre_delay": 0,
+        "timeout_next": "重开战斗"
+    },
+    "对话高坂": {
+        "recognition": "OCR",
+        "roi": [
+            669,
+            75,
+            234,
+            321
+        ],
+        "expected": "[高坂建设]",
+        "action": "Click",
+        "target": [
+            1003,
+            566.5,
+            56,
+            44
+        ],
+        "next": "对话高坂2"
+    },
+    "对话高坂2": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            497,
+            411,
+            281,
+            173
+        ],
+        "template": "BAT_chat_bg__547_461_181_73__497_411_281_173.png",
+        "threshold": 0.9,
+        "green_mask": true,
+        "action": "Click",
+        "target": [
+            1043,
+            603.5,
+            57,
+            69
+        ],
+        "next": [
+            "战斗结算",
+            "对话高坂3",
+            "对话高坂2"
+        ]
+    },
+    "对话高坂3": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            842,
+            316.5,
+            93,
+            171
+        ],
+        "template": "BAT_chat__884_428_23_25__834_378_123_125.png",
+        "action": "Click",
+        "next": [
+            "对话高坂2"
+        ]
+    },
+    "战斗结算": {
+        "recognition": "OCR",
+        "roi": [
+            1061,
+            662.5,
+            76,
+            31
+        ],
+        "expected": "[完成]",
+        "action": "Click",
+        "post_delay": 1000,
+        "next": [
+            "战斗结算",
+            "界面检测"
+        ],
+        "timeout": 30000
+    },
+    "重开战斗": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            7,
+            12,
+            133,
+            125
+        ],
+        "template": "BAT_logo1__57_62_33_25__7_12_133_125.png",
+        "threshold": 0.95,
+        "action": "Click",
+        "target": [
+            70,
+            56.5,
+            14,
+            15
+        ],
+        "next": [
+            "重开战斗2",
+            "重开战斗3"
+        ]
+    },
+    "重开战斗2": {
+        "recognition": "TemplateMatch",
+        "roi": [
+            669,
+            614,
+            126,
+            106
+        ],
+        "template": "BAT_restart_btn__719_664_26_26__669_614_126_106.png",
+        "action": "Click",
+        "next": [
+            "重开战斗2",
+            "重开战斗3"
+        ]
+    },
+    "重开战斗3": {
+        "recognition": "OCR",
+        "roi": [
+            511,
+            322,
+            246,
+            54
+        ],
+        "expected": "[重新开始战斗]{3,}",
+        "action": "Click",
+        "target": [
+            675,
+            418.5,
+            171,
+            29
+        ],
+        "next": [
+            "战斗逻辑"
+        ],
+        "post_delay": 8000,
+        "timeout": 60000
+    }
 }
