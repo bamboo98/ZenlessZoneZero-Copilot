@@ -11,9 +11,9 @@
 > 低代码的同时仍拥有高扩展性，旨在打造一款丰富、领先、且实用的开源库，助力开发者轻松编写出更好的黑盒测试程序，并推广普及。
 
 ## 如何使用
-下载最新发布版: [releases](https://github.com/bamboo98/ZenlessZoneZero-Copilot/releases) 并解压
-打开模拟器,启动游戏,设置好队伍(1号妮可,2号跑快快)
-运行解压后的ZZZ_Copilot.exe
+下载最新发布版: [releases](https://github.com/bamboo98/ZenlessZoneZero-Copilot/releases) 并解压  
+打开模拟器,启动游戏,设置好队伍(1号妮可,2号跑快快)  
+运行解压后的ZZZ_Copilot.exe  
 
 ## 鸣谢
 
