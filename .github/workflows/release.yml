@@ -23,8 +23,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
         pip install pipreqs
-        pipreqs src --encoding=utf8 --force
+        pipreqs src --encoding=utf8 --savepath src/requirementstemp.txt
         pip install -r src/requirements.txt
+        pip install -r src/requirementstemp.txt
 
     - name: Build executable
       run: |
