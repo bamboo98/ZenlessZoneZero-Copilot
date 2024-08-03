@@ -5,3 +5,6 @@ debug/*
 config/*
 **/.config/*
 assets/config/maa_pi_config.json
+*.spec
+build/*
+dist/

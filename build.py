@@ -19,11 +19,27 @@ if maa_bin_path is None:
 # 构建 --add-data 参数
 add_data_param = f'{maa_bin_path}{os.pathsep}maa/bin'
 
+# 查找包含 MaaAgentBinary 的路径
+maa_bin_path2 = None
+for path in site_packages_paths:
+    potential_path = os.path.join(path, 'MaaAgentBinary')
+    if os.path.exists(potential_path):
+        maa_bin_path2 = potential_path
+        break
+
+if maa_bin_path2 is None:
+    raise FileNotFoundError("未找到包含 MaaAgentBinary 的路径")
+
+# 构建 --add-data 参数
+add_data_param2 = f'{maa_bin_path2}{os.pathsep}MaaAgentBinary'
+
+
 # 运行 PyInstaller
 PyInstaller.__main__.run([
     'src/main.py',
     '--onefile',
     '--name=ZZZ_Copilot',
     f'--add-data={add_data_param}',
+    f'--add-data={add_data_param2}',
     '--clean',
 ])
