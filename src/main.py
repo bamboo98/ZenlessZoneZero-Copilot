@@ -13,6 +13,7 @@ from maa.custom_action import CustomAction
 
 import asyncio
 import time
+import psutil
 
 import sys
 
@@ -62,10 +63,13 @@ async def main():
 class NikoAttack(CustomAction):
     def run(self, context, task_name, custom_param, box, rec_detail) -> bool:
         # 前进
-        context.touch_down(0,233,576,50)
-        for i in range(576,440,-1):
+        context.touch_down(0,233,540,50)
+        for i in range(540,440,-10):
+            cur_t = time.time()
             context.touch_move(0,233,i,50)
-            time.sleep(0.001)
+            dlt_t = time.time() - cur_t
+            if dlt_t < 0.01:
+                time.sleep(0.01 - dlt_t)
         # 闪避
         context.touch_down(1,1119,636,50)
         time.sleep(0.05)
@@ -93,4 +97,14 @@ NikoAttack = NikoAttack()
 
 
 if __name__ == "__main__":
+    count = psutil.cpu_count()
+    print(f"逻辑cpu的数量是{count}")
+    # Process实例化时不指定pid参数，默认使用当前进程PID，即os.getpid()
+    p = psutil.Process()
+    cpu_lst = p.cpu_affinity()
+    if cpu_lst.count>=4:
+        cpu_lst = cpu_lst[-4:]
+        print("使用CPU", cpu_lst)
+        # 用最后4个CPU核心(13和14代的小核)
+        p.cpu_affinity(cpu_lst)
     asyncio.run(main())
