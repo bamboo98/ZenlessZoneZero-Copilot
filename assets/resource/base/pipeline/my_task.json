@@ -466,7 +466,9 @@
             56,
             44
         ],
-        "next": "对话高坂1"
+        "next": "对话高坂1",
+        "timeout": 8000,
+        "timeout_next": "重开战斗"
     },
     "对话高坂1": {
         "recognition": "TemplateMatch",
