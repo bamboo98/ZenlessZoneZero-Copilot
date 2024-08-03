@@ -11,10 +11,11 @@ from maa.toolkit import Toolkit
 from maa.custom_recognizer import CustomRecognizer
 from maa.custom_action import CustomAction
 
+import maa
 import asyncio
 import time
 import psutil
-
+import traceback
 import sys
 
 async def main():
@@ -26,8 +27,9 @@ async def main():
 
     device_list = await Toolkit.adb_devices()
     if not device_list:
-        print("No ADB device found.")
-        exit()
+        print("未找到任何ADB设备")
+        input("按任意键退出")
+        sys.exit()
 
     # for demo, we just use the first device
     device = device_list[0]
@@ -41,8 +43,9 @@ async def main():
     maa_inst.bind(resource, controller)
     
     if not maa_inst.inited:
-        print("Failed to init MAA.")
-        exit()
+        print("MAA框架初始化失败")
+        input("按任意键退出")
+        sys.exit()
 
     # maa_inst.register_recognizer("MyRec", my_rec)
     maa_inst.register_action("NikoAttack", NikoAttack)
@@ -116,14 +119,19 @@ JustRun = JustRun()
 
 
 if __name__ == "__main__":
-    count = psutil.cpu_count()
-    print(f"逻辑cpu的数量是{count}")
-    # Process实例化时不指定pid参数，默认使用当前进程PID，即os.getpid()
-    p = psutil.Process()
-    cpu_lst = p.cpu_affinity()
-    if len(cpu_lst)>=4:
-        cpu_lst = cpu_lst[-4:]
-        print("使用CPU", cpu_lst)
-        # 用最后4个CPU核心(13和14代的小核)
-        p.cpu_affinity(cpu_lst)
-    asyncio.run(main())
+    try:
+        count = psutil.cpu_count()
+        print(f"逻辑cpu的数量是{count}")
+        # Process实例化时不指定pid参数，默认使用当前进程PID，即os.getpid()
+        p = psutil.Process()
+        cpu_lst = p.cpu_affinity()
+        if len(cpu_lst)>=4:
+            cpu_lst = cpu_lst[-4:]
+            print("使用CPU", cpu_lst)
+            # 用最后4个CPU核心(13和14代的小核)
+            p.cpu_affinity(cpu_lst)
+        asyncio.run(main())
+    except Exception as e:
+        print(f"程序执行过程中发生错误: {e}")
+        traceback.print_exc()
+        input("按回车键退出...")
