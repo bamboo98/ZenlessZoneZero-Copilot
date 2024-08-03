@@ -64,28 +64,11 @@
 
         2. 运行 `install/MaaPiCli.exe`
 
-5. 完成开发工作后，上传您的代码并发布版本。
-
-    ```bash
-    # 配置 git 信息（仅第一次需要，后续不用再配置）
-    git config user.name "您的 GitHub 昵称"
-    git config user.email "您的 GitHub 邮箱"
-    
-    # 提交修改
-    git add .
-    git commit -m "XX 新功能"
-    git push origin HEAD -u
-    ```
-
-6. 发布您的版本
-
-    需要先修改仓库设置 `Settings` - `Actions` - `General` - `Read and write permissions` - `Save`
-
-    ```bash
-    # CI 检测到 tag 会自动进行发版
-    git tag v1.0.0
-    git push origin v1.0.0
-    ```
+5. 打开Mumu12模拟器,按要求修改游戏设置,启动测试程序
+   ```bash
+   python ./src/main.py
+   ```
+   
 
 ## 生态共建
 
