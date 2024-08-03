@@ -2,3 +2,5 @@
 **/.vscode/*
 debug/*
 *.log
+config/*
+*/.config/*
