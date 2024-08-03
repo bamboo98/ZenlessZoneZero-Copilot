@@ -46,7 +46,7 @@ async def main():
 
     # maa_inst.register_recognizer("MyRec", my_rec)
     maa_inst.register_action("NikoAttack", NikoAttack)
-
+    maa_inst.register_action("JustRun", JustRun)
     print("ZZZ!启动!")
     print("队伍1号位建议上妮可,用比利步子迈大了可能定位会歪,2号位上一个跑得快的")
 
@@ -63,13 +63,8 @@ async def main():
 class NikoAttack(CustomAction):
     def run(self, context, task_name, custom_param, box, rec_detail) -> bool:
         # 前进
-        context.touch_down(0,233,540,50)
-        for i in range(540,440,-10):
-            cur_t = time.time()
-            context.touch_move(0,233,i,50)
-            dlt_t = time.time() - cur_t
-            if dlt_t < 0.01:
-                time.sleep(0.01 - dlt_t)
+        context.touch_down(0,239,456,50)
+        time.sleep(0.10)
         # 闪避
         context.touch_down(1,1119,636,50)
         time.sleep(0.05)
@@ -87,13 +82,37 @@ class NikoAttack(CustomAction):
         time.sleep(0.05)
         context.touch_up(0)
         return True
+    def stop(self) -> None:
+        pass
 
+class JustRun(CustomAction):
+    def run(self, context, task_name, custom_param, box, rec_detail) -> bool:
+        # 前进
+        context.touch_down(0,315,519,50)
+        time.sleep(0.05)
+        # 闪避
+        context.touch_down(1,1119,636,50)
+        time.sleep(0.05)
+        context.touch_up(1)
+        time.sleep(0.20)
+        # 闪避
+        context.touch_down(1,1119,636,50)
+        time.sleep(0.05)
+        context.touch_up(1)
+        time.sleep(3.3)
+        # 转向
+        context.touch_move(0,238,472,50)
+        time.sleep(1.8)
+        context.touch_up(0)
+
+        return True
     def stop(self) -> None:
         pass
 
 
 # my_rec = MyRecognizer()
 NikoAttack = NikoAttack()
+JustRun = JustRun()
 
 
 if __name__ == "__main__":

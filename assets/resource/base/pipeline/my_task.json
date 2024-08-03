@@ -411,52 +411,19 @@
             138
         ],
         "expected": "80/",
-        "action": "Swipe",
-        "begin": [
-            231,
-            569.5,
-            16,
-            19
-        ],
-        "end": [
-            346,
-            387.5,
-            23,
-            27
-        ],
-        "duration": 4900,
-        "post_delay": 0,
-        "next": "战斗结束2"
-    },
-    "战斗结束2": {
-        "action": "Swipe",
-        "begin": [
-            231,
-            569.5,
-            16,
-            19
-        ],
-        "end": [
-            425,
-            619.5,
-            26,
-            18
-        ],
-        "duration": 900,
-        "next": [
-            "对话高坂"
-        ],
-        "timeout": 3000,
+        "action": "Custom",
+        "custom_action": "JustRun",
         "pre_delay": 0,
-        "timeout_next": "重开战斗"
+        "post_delay": 0,
+        "next": "对话高坂"
     },
     "对话高坂": {
         "recognition": "OCR",
         "roi": [
-            669,
-            75,
-            234,
-            321
+            285,
+            126,
+            345,
+            314
         ],
         "expected": "[高坂建设]",
         "action": "Click",
