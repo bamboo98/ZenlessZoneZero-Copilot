@@ -3,4 +3,5 @@
 debug/*
 *.log
 config/*
-*/.config/*
+**/.config/*
+assets/config/maa_pi_config.json
