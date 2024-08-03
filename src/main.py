@@ -102,7 +102,7 @@ if __name__ == "__main__":
     # Process实例化时不指定pid参数，默认使用当前进程PID，即os.getpid()
     p = psutil.Process()
     cpu_lst = p.cpu_affinity()
-    if cpu_lst.count>=4:
+    if len(cpu_lst)>=4:
         cpu_lst = cpu_lst[-4:]
         print("使用CPU", cpu_lst)
         # 用最后4个CPU核心(13和14代的小核)
