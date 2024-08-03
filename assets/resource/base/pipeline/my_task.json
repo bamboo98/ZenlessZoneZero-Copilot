@@ -517,7 +517,8 @@
             "战斗结算",
             "对话高坂3",
             "对话高坂2"
-        ]
+        ],
+        "timeout": 40000
     },
     "对话高坂3": {
         "recognition": "TemplateMatch",

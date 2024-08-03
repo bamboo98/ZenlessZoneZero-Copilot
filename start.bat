@@ -1,5 +1,3 @@
 @echo off
-echo 好像有问题?
-cd src
-python main.py
+python ./src/main.py
 pause
