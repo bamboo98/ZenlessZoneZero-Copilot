@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
@@ -30,12 +30,11 @@ jobs:
 
     - name: Move executable to root
       run: |
-        mv ${{ github.workspace }}/dist/ZZZ_Copilot.exe .
-        mv ${{ github.workspace }}/assets .
+        move dist\ZZZ_Copilot.exe .
 
     - name: Create zip file
       run: |
-        zip -r release.zip ZZZ_Copilot.exe assets
+        powershell Compress-Archive -Path ZZZ_Copilot.exe, assets -DestinationPath release.zip
       
     - name: Create Release
       id: create_release
