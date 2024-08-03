@@ -99,10 +99,10 @@ class JustRun(CustomAction):
         context.touch_down(1,1119,636,50)
         time.sleep(0.05)
         context.touch_up(1)
-        time.sleep(3.3)
+        time.sleep(3.1)
         # 转向
         context.touch_move(0,238,472,50)
-        time.sleep(1.8)
+        time.sleep(1.6)
         context.touch_up(0)
 
         return True
