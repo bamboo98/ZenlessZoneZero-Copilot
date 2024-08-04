@@ -19,6 +19,20 @@ import traceback
 import sys
 
 async def main():
+    print("！！！本项目开源免费，如果您遇到任何收费情况都属于被他人欺骗")
+    print("！！！请勿购买任何收费版本，如已购买请立刻申请退款并举报商家")
+    print("开源仓库地址https://github.com/bamboo98/ZenlessZoneZero-Copilot")
+    print("请确保模拟器分辨率为1280x720,DPI为240")
+    print("游戏设置镜头灵敏度:5  镜头自动跟随转动:关闭  游戏语言:简体中文")
+    # Process实例化时不指定pid参数，默认使用当前进程PID，即os.getpid()
+    p = psutil.Process()
+    cpu_lst = p.cpu_affinity()
+    if len(cpu_lst)>=4:
+        cpu_lst = cpu_lst[-4:]
+        print("使用CPU", cpu_lst)
+        # 用最后4个CPU核心(13和14代的小核)
+        p.cpu_affinity(cpu_lst)
+    print("Maa框架开始初始化")
     user_path = "./"
     Toolkit.init_option(user_path)
 
@@ -50,7 +64,8 @@ async def main():
     # maa_inst.register_recognizer("MyRec", my_rec)
     maa_inst.register_action("NikoAttack", NikoAttack)
     maa_inst.register_action("JustRun", JustRun)
-    print("ZZZ!启动!")
+    print("MAA框架初始化完成,开始执行任务")
+    print("拿命验收!启动!")
     print("队伍1号位建议上妮可,用比利步子迈大了可能定位会歪,2号位上一个跑得快的")
 
     await maa_inst.run_task("界面检测")
@@ -120,16 +135,6 @@ JustRun = JustRun()
 
 if __name__ == "__main__":
     try:
-        count = psutil.cpu_count()
-        print(f"逻辑cpu的数量是{count}")
-        # Process实例化时不指定pid参数，默认使用当前进程PID，即os.getpid()
-        p = psutil.Process()
-        cpu_lst = p.cpu_affinity()
-        if len(cpu_lst)>=4:
-            cpu_lst = cpu_lst[-4:]
-            print("使用CPU", cpu_lst)
-            # 用最后4个CPU核心(13和14代的小核)
-            p.cpu_affinity(cpu_lst)
         asyncio.run(main())
     except Exception as e:
         print(f"程序执行过程中发生错误: {e}")
